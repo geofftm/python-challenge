@@ -7,3 +7,5 @@ csvpath = '/Users/geoffreymatis/Desktop/DS_Bootcamp/Git/python-challenge/PyBank/
 
 with open(csvpath, 'r') as csvfile:
      csvreader = csv.reader(csvfile, delimiter=',')
+     for row in csvreader:
+         print(row)
