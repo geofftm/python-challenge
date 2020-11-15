@@ -11,6 +11,7 @@ totalProfitsLosses = 0
 currentProfitLoss = 0
 lastProfitLoss = 0
 
+
 monthList = []
 changeList = []
 profitsLosses = []
@@ -25,27 +26,50 @@ with open(csvpath, 'r') as csvfile:
     #  changeList = []
     #  totalProfitsLosses = 0
      for row in csvreader:
-        month = row[0]
-        profits_losses = row[1]
-        totalProfitsLosses += int(profits_losses)
-        change = int(profits_losses) - value
-        #print(change)
-        value = int(row[1])
-        monthList.append(months)
-        profitsLosses.append(profits_losses)
-        valueList.append(value)
-        changeList.append(int(change))
-    
-    
-     print("Total Months: " + str(len(monthList)))
-     print("Total: $" + str(totalProfitsLosses))
+        months += 1
+        currentProfitLoss = int(row[1])
+        #month = row[0]
+        #profits_losses = row[1]
+        totalProfitsLosses += currentProfitLoss
+
+        if months == 1:
+            lastProfitLoss = currentProfitLoss
+            continue
+        else:
+            change = currentProfitLoss - lastProfitLoss
+            monthList.append(row[0])
+            changeList.append(change)
+            lastProfitLoss = currentProfitLoss
      
-     negativeSum = sum(i for i in changeList if i < 0)
+     changeSum = sum(changeList)
+     averageChange = changeSum / (months - 1)
+     maxChange = max(changeList)
+     minChange = min(changeList)
 
-     positiveSum = sum(j for j in changeList if j > 0)
 
-     print(positiveSum)
-     print(negativeSum)
+        # change = int(profits_losses) - value
+        # #print(change)
+        # value = int(row[1])
+        # monthList.append(months)
+        # profitsLosses.append(profits_losses)
+        # valueList.append(value)
+        # changeList.append(int(change))
+     print(changeList)
+     print(f"Total Months : {months}")
+     print(f"Total: ${totalProfitsLosses}")
+     print(f"Average Change: ${averageChange}")
+     print(maxChange)
+     print(minChange)
+    
+    #  print("Total Months: " + str(len(monthList)))
+    #  print("Total: $" + str(totalProfitsLosses))
+     
+    #  negativeSum = sum(i for i in changeList if i < 0)
+
+    #  positiveSum = sum(j for j in changeList if j > 0)
+
+    #  print(positiveSum)
+    #  print(negativeSum)
     
 
      
