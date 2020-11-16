@@ -1,9 +1,7 @@
 import os
 import csv
 
-#csvpath = os.path.join('..', 'Resources', 'budget_data.csv')
-
-csvpath = '/Users/geoffreymatis/Desktop/DS_Bootcamp/Git/python-challenge/PyBank/Resources/budget_data.csv'
+csvpath = os.path.join('..', 'Resources', 'budget_data.csv')
 
 months = 0
 value = 0
@@ -21,15 +19,9 @@ with open(csvpath, 'r') as csvfile:
      csvreader = csv.reader(csvfile, delimiter=',')
      csv_header = next(csvreader)
      
-    #  profitsLosses = []
-    # valueList = []
-    #  changeList = []
-    #  totalProfitsLosses = 0
      for row in csvreader:
         months += 1
         currentProfitLoss = int(row[1])
-        #month = row[0]
-        #profits_losses = row[1]
         totalProfitsLosses += currentProfitLoss
 
         if months == 1:
@@ -46,30 +38,32 @@ with open(csvpath, 'r') as csvfile:
      maxChange = max(changeList)
      minChange = min(changeList)
 
+     maxIdx = changeList.index(maxChange)
+     minIdx = changeList.index(minChange)
 
-        # change = int(profits_losses) - value
-        # #print(change)
-        # value = int(row[1])
-        # monthList.append(months)
-        # profitsLosses.append(profits_losses)
-        # valueList.append(value)
-        # changeList.append(int(change))
-     print(changeList)
+     maxDate = monthList[maxIdx]
+     minDate = monthList[minIdx]
+
+     print("")
+     print("Financial Analysis")
+     print("----------------------------")
+     print("")
      print(f"Total Months : {months}")
      print(f"Total: ${totalProfitsLosses}")
      print(f"Average Change: ${averageChange}")
-     print(maxChange)
-     print(minChange)
-    
-    #  print("Total Months: " + str(len(monthList)))
-    #  print("Total: $" + str(totalProfitsLosses))
-     
-    #  negativeSum = sum(i for i in changeList if i < 0)
+     print(f"Greatest Increase in Profits: {maxDate} (${maxChange})")
+     print(f"Greatest Decrease in Profits: {minDate} (${minChange})")
 
-    #  positiveSum = sum(j for j in changeList if j > 0)
-
-    #  print(positiveSum)
-    #  print(negativeSum)
+budget_data_analysis = os.path.join("budget_data_analysis.txt")
+with open(budget_data_analysis, "w") as output:
+     output.write("Financial Analysis\n")
+     output.write("----------------------------\n")
+     output.write("")
+     output.write(f"Total Months : {months}\n")
+     output.write(f"Total: ${totalProfitsLosses}\n")
+     output.write(f"Average Change: ${averageChange}\n")
+     output.write(f"Greatest Increase in Profits: {maxDate} (${maxChange})\n")
+     output.write(f"Greatest Decrease in Profits: {minDate} (${minChange})\n")
     
 
      
