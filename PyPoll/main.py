@@ -17,7 +17,7 @@ with open(csvpath, 'r') as csvfile:
          candidates.append(row[2])
          totalVotes += 1
      
-     counted = Counter(candidates)
+     counted = Counter (candidates)
      kahnTotal = counted['Khan']
      correyTotal = counted['Correy']
      liTotal = counted['Li']
@@ -44,11 +44,14 @@ with open(csvpath, 'r') as csvfile:
     #     print(ele)
         #countedList.append(counted[ele])
 
-     for i in countedListSort:
-         print(i)
+     for i, j in countedListSort:
+         voteCount.append(i)
+         voteCount.append(j)
+     
+ 
          
 
-
+     print(voteCount)
      print("Election Results")
      print("-------------------------")
      print(f"Total Votes : {totalVotes}")
