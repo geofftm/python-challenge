@@ -22,21 +22,34 @@ with open(csvpath, 'r') as csvfile:
      liTotal = counted['Li']
      oTotal = counted["O'Tooley"]
     
-     kahnAvg = round( kahnTotal / totalVotes, 2) * 100
-     correyAvg = round(correyTotal / totalVotes, 2) * 100
-     liAvg = round(liTotal / totalVotes, 2) * 100
-     oAvg = round(oTotal / totalVotes, 2) * 100
+     kahnAvg = (kahnTotal / totalVotes) * 100
+     correyAvg = (correyTotal / totalVotes) * 100
+     liAvg = (liTotal / totalVotes) * 100
+     oAvg = (oTotal / totalVotes) * 100
+
+     countedList = counted.most_common()
+
+    #  candidates_votes_list = []
+    #  for key, value in counted():
+    #    # print(key, value)
+    #     for i in range(value):
+    #         candidates_votes_list.append(key)
+
+     for ele in counted:
+        #print(ele,counted[ele])
+        countedList.append(counted[ele])
 
      print("Election Results")
      print("-------------------------")
      print(f"Total Votes : {totalVotes}")
      print(f"Khan: {counted['Khan']}")
      print(counted)
-     print(oTotal)
-     print(kahnAvg)
-     print(correyAvg)
-     print(liAvg)
-     print(oAvg)
+     print(round(oTotal, 2))
+     print(round(kahnAvg, 2))
+     print(round(correyAvg, 2))
+     print(round(liAvg, 2))
+     print(round(oAvg, 2))
+     print(countedList)
 
      
      
