@@ -22,6 +22,13 @@ with open(csvpath, 'r') as csvfile:
      countedCandidates = Counter (sortedCandidates)
      
      voteCount.append(countedCandidates.most_common())
+
+     for i in voteCount:
+         platinum = i[0][1]
+         gold = i[1][1]
+         silver = i[2][1]
+         bronze = i[3][1]
+
      
      #less dynamic way. go into counter object and grab values from keys and run the math that way.
      #trying a more dynamic way.
@@ -56,8 +63,11 @@ with open(csvpath, 'r') as csvfile:
  
          
 
-     print(sortedCandidates)
-     print(voteCount)
+     #print(sortedCandidates)
+     print(platinum)
+     print(gold)
+     print(silver)
+     print(bronze)
      print("Election Results")
      print("-------------------------")
      print(f"Total Votes : {totalVotes}")
