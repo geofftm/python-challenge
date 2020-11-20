@@ -1,5 +1,6 @@
 import os
 import csv
+from collections import Counter
 
 csvpath = os.path.join('Resources', 'election_data.csv')
 
@@ -14,8 +15,14 @@ with open(csvpath, 'r') as csvfile:
      for row in csvreader:
          candidates.append(row[2])
          totalVotes += 1
-     print(totalVotes)
-     print(sorted(candidates))
+     
+     counted = Counter(candidates)
+     print("Election Results")
+     print("-------------------------")
+     print(f"Total Votes : {totalVotes}")
+     print(f"Khan: {counted['Khan']}")
+     print(counted)
+     
 
      
      
