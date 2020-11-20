@@ -10,8 +10,8 @@ with open(csvpath, 'r') as csvfile:
      csv_header = next(csvreader)
 
      for row in csvreader:
-         candidates.append(row[1])
-         print(len(candidates))
+         candidates.append(row[2])
+     print(len(candidates))
      
 
 
