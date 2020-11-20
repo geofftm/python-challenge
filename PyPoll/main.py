@@ -5,6 +5,7 @@ from collections import Counter
 csvpath = os.path.join('Resources', 'election_data.csv')
 
 candidates = []
+voteCount = []
 
 totalVotes = 0
 
@@ -28,6 +29,10 @@ with open(csvpath, 'r') as csvfile:
      oAvg = (oTotal / totalVotes) * 100
 
      countedList = counted.most_common()
+     countedListSort = sorted(countedList)
+
+     
+     
 
     #  candidates_votes_list = []
     #  for key, value in counted():
@@ -35,9 +40,14 @@ with open(csvpath, 'r') as csvfile:
     #     for i in range(value):
     #         candidates_votes_list.append(key)
 
-     for ele in counted:
-        #print(ele,counted[ele])
-        countedList.append(counted[ele])
+    #  for ele in counted:
+    #     print(ele)
+        #countedList.append(counted[ele])
+
+     for i in countedListSort:
+         print(i)
+         
+
 
      print("Election Results")
      print("-------------------------")
@@ -50,6 +60,7 @@ with open(csvpath, 'r') as csvfile:
      print(round(liAvg, 2))
      print(round(oAvg, 2))
      print(countedList)
+     print(countedListSort)
 
      
      
