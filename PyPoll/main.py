@@ -17,18 +17,19 @@ with open(csvpath, 'r') as csvfile:
          candidates.append(row[2])
          totalVotes += 1
      
-     counted = Counter (candidates)
-     kahnTotal = counted['Khan']
-     correyTotal = counted['Correy']
-     liTotal = counted['Li']
-     oTotal = counted["O'Tooley"]
+     sortedCandidates = sorted(candidates)
+     countedCandidates = Counter (sortedCandidates)
+     kahnTotal = countedCandidates['Khan']
+     correyTotal = countedCandidates['Correy']
+     liTotal = countedCandidates['Li']
+     oTotal = countedCandidates["O'Tooley"]
     
      kahnAvg = (kahnTotal / totalVotes) * 100
      correyAvg = (correyTotal / totalVotes) * 100
      liAvg = (liTotal / totalVotes) * 100
      oAvg = (oTotal / totalVotes) * 100
 
-     countedList = counted.most_common()
+     countedList = countedCandidates.most_common()
      countedListSort = sorted(countedList)
 
      
@@ -51,12 +52,11 @@ with open(csvpath, 'r') as csvfile:
  
          
 
-     print(voteCount)
+     print(sortedCandidates)
      print("Election Results")
      print("-------------------------")
      print(f"Total Votes : {totalVotes}")
-     print(f"Khan: {counted['Khan']}")
-     print(counted)
+     print(f"Khan: {countedCandidates['Khan']}")
      print(round(oTotal, 2))
      print(round(kahnAvg, 2))
      print(round(correyAvg, 2))
