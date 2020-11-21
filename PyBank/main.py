@@ -27,41 +27,67 @@ valueList = []
 
 with open(csvpath, 'r') as csvfile:
     # setting the delimiter on the comma as this is a csv file
+     
      csvreader = csv.reader(csvfile, delimiter=',')
+     
      #this will skip the header
+     
      csv_header = next(csvreader)
+     
      # loop through the file
      for row in csvreader:
+        
         # counting months
+        
         months += 1
+        
         # grabbing the current value in the Profit/Losses Colum
+        
         currentProfitLoss = int(row[1])
+        
         #totaling the profit/losses
+        
         totalProfitsLosses += currentProfitLoss
-        # conditional statement that will make sure not to try to calucate the change since there was no prior value to calculate against
+        
+        # conditional statement that will make sure not to try to calucate the first row of profits/losses as a change since there was no prior value to calculate against
         if months == 1:
             lastProfitLoss = currentProfitLoss
             continue
         else:
             # this statement calculates the change by subtracting the prior value of the profits/losses column from the current value in profits/losses column
+            
             change = currentProfitLoss - lastProfitLoss
+            
             #append the current month to the list of months each pass through the loop
+            
             monthList.append(row[0])
+            
             #append the change calculation to the list of changes each pass through the loop
+            
             changeList.append(change)
             lastProfitLoss = currentProfitLoss
+     
      #calculating the sum of the changes, the average change, the highest change and the minium change
+     
      changeSum = sum(changeList)
+     
      # formatting so the average change will be shown with 2 decimal points in a float
+     
      averageChange = format(changeSum / (months - 1), '.2f')
+     
      maxChange = max(changeList)
      minChange = min(changeList)
+     
      #index values of the largest and smallest changes
+     
      maxIdx = changeList.index(maxChange)
      minIdx = changeList.index(minChange)
+     
      # getting the date of the largest and smallest changes using the index
+     
      maxDate = monthList[maxIdx]
      minDate = monthList[minIdx]
+    
     # print the the text
      print("")
      print("Financial Analysis")
@@ -73,7 +99,9 @@ with open(csvpath, 'r') as csvfile:
      print(f"Average Change: ${averageChange}")
      print(f"Greatest Increase in Profits: {maxDate} (${maxChange})")
      print(f"Greatest Decrease in Profits: {minDate} (${minChange})")
+    
     #export the text
+    
 budget_data_analysis = os.path.join("Analysis", "budget_data_analysis.txt")
 with open(budget_data_analysis, "w") as output:
      output.write("Financial Analysis\n")

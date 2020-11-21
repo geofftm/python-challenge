@@ -21,29 +21,45 @@ totalVotes = 0
 
 with open(csvpath, 'r') as csvfile:
     # setting the delimiter on the comma as this is a csv file
+     
      csvreader = csv.reader(csvfile, delimiter=',')
+     
      # this will skip the header
+     
      csv_header = next(csvreader)
 
      #loop through the file
 
      for row in csvreader:
+         
          # append the candidates to the empty list 'candidates' each pass through the loop
+         
          candidates.append(row[2])
+         
          # count the total votes by adding a vote each pass through the loop
+         
          totalVotes += 1
+
      # use the sort method to sort the list by candidate name
+
      sortedCandidates = sorted(candidates)
+
      # Use counter to give the total count of votes by each candidate
+
      countedCandidates = Counter (sortedCandidates)
+
      # use most_common() method to get the most - least counts and append the values to an empty list
+
      voteCount.append(countedCandidates.most_common())
+     
      # loop through voteCount list and assign the vote totals to variables, from highest to lowest, using the index values of in the list of couples
+
      for i in voteCount:
          platinum = i[0][1]
          gold = i[1][1]
          silver = i[2][1]
          bronze = i[3][1]
+     
      # loop through the voteCount list again assign the names to variables using the index value in the list of couples
          name1 = i[0][0]
          name2 = i[1][0]
@@ -51,6 +67,7 @@ with open(csvpath, 'r') as csvfile:
          name4 = i[3][0]
      
      # calculating the percentages of the vote and formatting to 3  decimal places using the float value
+
      platinumPct = format((platinum)*100/(sum(countedCandidates.values())), '.3f')
      goldPct = format((gold)*100/(sum(countedCandidates.values())), '.3f')
      silverPct = format((silver)*100/(sum(countedCandidates.values())), '.3f')
@@ -68,7 +85,7 @@ with open(csvpath, 'r') as csvfile:
      print("-------------------------")
      print(f"Total Votes : {totalVotes}")
      print("-------------------------")
-     #using f strings to build the strings showing name, perentage of the vote and total votes
+     # using f strings to build the strings showing name, perentage of the vote and total votes
      print(f"{name1}: {platinumPct}% ({platinum})")
      print(f"{name2}: {goldPct}% ({gold})")
      print(f"{name3}: {silverPct}% ({silver})")
