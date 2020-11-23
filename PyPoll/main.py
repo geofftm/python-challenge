@@ -73,14 +73,7 @@ with open(csvpath, 'r') as csvfile:
      silverPct = format((silver)*100/(sum(countedCandidates.values())), '.3f')
      bronzePct = format((bronze)*100/(sum(countedCandidates.values())), '.3f')
 
-    #  print(name1)
-    #  print(name2)
-    #  print(name3)
-    #  print(name4)
-    #  print(platinumPct)
-    #  print(goldPct)
-    #  print(silverPct)
-    #  print(bronzePct)
+
      print("Election Results")
      print("-------------------------")
      print(f"Total Votes : {totalVotes}")
