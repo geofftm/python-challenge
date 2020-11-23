@@ -4,7 +4,7 @@ Python Assignment 1
 
 ## PyBank
 
-![Revenue](Images/revenue-per-lead.png)
+![Revenue](https://github.com/geofftm/python-challenge/blob/main/PyBank/Images/revenue-per-lead.png)
 
 * In this challenge, we were tasked with creating a Python script for analyzing the financial records of a company. We needed to give a set of financial data called [budget_data.csv](PyBank/Resources/budget_data.csv). The dataset is composed of two columns: `Date` and `Profit/Losses`. 
 
@@ -36,7 +36,7 @@ Python Assignment 1
 
 ## PyPoll
 
-![Vote Counting](Images/Vote_counting.png)
+![Vote Counting](https://github.com/geofftm/python-challenge/blob/main/PyBank/Images/Vote_counting.png)
 
 * In this challenge, we were tasked with helping a small, rural town modernize its vote counting process.
 
